@@ -1,0 +1,16 @@
+{
+  "name": "raven-plugins",
+  "owner": {
+    "name": "Raven Risk AI Inc."
+  },
+  "metadata": {
+    "description": "Raven plugins for Claude."
+  },
+  "plugins": [
+    {
+      "name": "raven-direct",
+      "source": "./",
+      "description": "Analyze, underwrite, and monitor corporate credit on the deals in your Raven account through the Raven Direct connector."
+    }
+  ]
+}

@@ -1,0 +1,377 @@
+{
+ "title": "AI Review (template)",
+ "blocks": [
+  {
+   "fn": "title",
+   "args": [
+    "[Project]: AI Review"
+   ]
+  },
+  {
+   "fn": "kv4",
+   "args": [
+    [
+     [
+      "Project and company",
+      "[Project; company]",
+      "Sector",
+      "[Sector]"
+     ],
+     [
+      "AI net assessment",
+      "[Verdict as stated, with the qualifier its rationale gives; near-term threat; highest-credibility opportunity, or Not stated]",
+      "Peer set",
+      "[Peers, or Not available for this deal]"
+     ],
+     [
+      "Documents cover",
+      "[Period; flag if more than two years old]",
+      "Last full refresh",
+      "[Date, and any later edits, or Current]"
+     ]
+    ]
+   ]
+  },
+  {
+   "fn": "gap",
+   "args": [
+    80
+   ]
+  },
+  {
+   "fn": "noteBox",
+   "args": [
+    "Analyst Note: ",
+    "[At most two sentences, only when a trigger applies.]"
+   ]
+  },
+  {
+   "fn": "source",
+   "args": [
+    "Terms. [Only the acronyms used. Items are labeled disclosed or inferred; \"appears\" marks inference.]"
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "1. Executive Summary"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One factual sentence, at most 35 words: the revenue most exposed and its share, the net assessment, and what is not disclosed.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[The highest-severity threat and the most credible opportunity, as stated, and what is missing.]",
+     "[What cannot be assessed, or what to close first.]",
+     "[The loan against pro forma EBITDA, and how any effect reaches repayment.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "2. Risks and Opportunities"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[Two sentences: how many threats are rated and how severity splits, the segments they bear on; how many opportunities are timed and whether any is quantified.]"
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table 2.1",
+    "[AI threats and opportunities as rated, by exposed segment]",
+    "[sources]"
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     2400,
+     6400,
+     3000,
+     1736
+    ],
+    [
+     "left",
+     "left",
+     "left",
+     "left"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Item",
+       "Mechanism",
+       "Exposed segment",
+       "Rating or timing"
+      ]
+     },
+     {
+      "k": "sub",
+      "c": [
+       "Risks",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "c": [
+       "[Name of the threat as stated]",
+       "[One sentence, at most 15 words]",
+       "[Segment as stated; revenue and share only where the product line is named]",
+       "[Severity as stated]"
+      ]
+     },
+     {
+      "k": "sub",
+      "c": [
+       "Opportunities",
+       "",
+       "",
+       ""
+      ]
+     },
+     {
+      "c": [
+       "[Name of the opportunity as stated]",
+       "[One sentence, at most 15 words]",
+       "[Segment]",
+       "[Timeline as stated; benefit unverified]"
+      ]
+     }
+    ],
+    18,
+    true
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[Also identified, not rated: ... Not carried: ...]",
+    {
+     "size": 15,
+     "color": "607079"
+    }
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "3. Competitor Activity"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One sentence: how many competitors are profiled across how many product lines, whether any scale is disclosed, whether any source states AI activity.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table 3.1",
+    "[Competitors by product line]",
+    "[sources]"
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     2600,
+     4800,
+     6136
+    ],
+    [
+     "left",
+     "left",
+     "left"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Competitor",
+       "Competes in",
+       "Basis of competition"
+      ]
+     },
+     {
+      "c": [
+       "[Competitor as profiled]",
+       "[Product line]",
+       "[What it competes on, as profiled]"
+      ]
+     },
+     {
+      "c": [
+       "[Competitor]",
+       "[Product line]",
+       "[Basis]"
+      ]
+     }
+    ],
+    18,
+    true
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[Also named in the filing: ...]",
+    {
+     "size": 15,
+     "color": "607079"
+    }
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[The company's claim against its own risk language, and the rated competitive threats.]",
+     "[Where a peer set exists: what the peers' filings show, labeled peer filing, with the period; the R&D plan against the peers' growth.]",
+     "[The data gap, if no source says what competitors do in AI.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "4. Competitive Advantages"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One line: what the borrower's protection rests on, and whether AI strengthens or weakens it.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[What protects the borrower, with its stated durability.]",
+     "[Whether that protection is tested by retention or win-loss data, or untested.]",
+     "[What is not protected, as the sources say.]",
+     "[Where AI cuts both ways, labeled inferred.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "5. Adoption and Governance"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One line: what is in use, whether it is owned and measured.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "In production: [what is in production or planned; whether the filing calls it AI; comparison with named peers where a peer set exists.]",
+     "Results: [any disclosed result, spend or target; no unquantified benefit.]",
+     "Ownership and oversight: [who owns AI, board oversight, third-party providers and data terms; R&D plan against peers' growth.]",
+     "Regulation: [frameworks only where a basis is stated.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "6. Credit Implications and Outlook"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One line: how AI reaches repayment and whether it can be sized.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Retention and price, led by the weighted exposure.]",
+     "[Reinvestment.]",
+     "[Monitoring line.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "7. Priority Diligence"
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Group: the exposure it closes]"
+   ]
+  },
+  {
+   "fn": "numbered",
+   "args": [
+    [
+     "[One ask, at most 30 words, naming a product, competitor or figure, ending with the source that would answer it. Add as many as the sources support.]"
+    ],
+    1
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Next group]"
+   ]
+  },
+  {
+   "fn": "numbered",
+   "args": [
+    [
+     "[Question]"
+    ],
+    1
+   ]
+  },
+  {
+   "fn": "basis",
+   "args": [
+    "Sources: [underlying documents, named once]"
+   ]
+  }
+ ]
+}

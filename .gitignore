@@ -1,0 +1,14 @@
+# OS files the directory validator blocks
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# Editor and Python leftovers
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# Office lock files
+~$*

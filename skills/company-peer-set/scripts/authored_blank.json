@@ -1,0 +1,63 @@
+{
+ "deal": "(optional) deal name",
+ "executive_summary": {
+  "lead": "Placeholder lead.",
+  "points": [
+   "Placeholder point."
+  ]
+ },
+ "caveats": [
+  "Placeholder caveat."
+ ],
+ "data_notes": [
+  "Placeholder data note."
+ ],
+ "row_notes": [
+  "Placeholder row note."
+ ],
+ "takeaways": [
+  "Placeholder takeaway."
+ ],
+ "industry_developments": [
+  {
+   "label": "Item label",
+   "body": "Placeholder.",
+   "credit_implication": "Placeholder."
+  }
+ ],
+ "peer_insights": [
+  {
+   "label": "Item label",
+   "body": "Placeholder.",
+   "credit_implication": "Placeholder.",
+   "deal_note": "Placeholder."
+  }
+ ],
+ "filing_signals": [
+  {
+   "label": "Item label"
+  }
+ ],
+ "capital_structure": {
+  "covenant_narrative": "Placeholder.",
+  "structural_caveat": "Placeholder.",
+  "target_reference": "Placeholder.",
+  "leverage_basis": "Placeholder.",
+  "as_of": {
+   "Company": "date"
+  },
+  "target_rows": [
+   [
+    "Facility",
+    "Amount",
+    "Rate",
+    "Maturity",
+    "Security",
+    "Terms"
+   ]
+  ],
+  "block_sources": {
+   "Company": "Deal documents"
+  }
+ }
+}

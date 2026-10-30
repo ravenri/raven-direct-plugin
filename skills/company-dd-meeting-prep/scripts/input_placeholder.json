@@ -1,0 +1,136 @@
+{
+ "title": "[Deal name] Meeting Prep",
+ "logistics": [
+  [
+   "Deal",
+   "[Deal name and company]"
+  ],
+  [
+   "Meeting type",
+   "[Management presentation, expert call, customer or owner reference, or advisor check-in]"
+  ],
+  [
+   "Attendees",
+   "[Names and roles]"
+  ],
+  [
+   "Date",
+   "[Date]"
+  ],
+  [
+   "Topic focus",
+   "[Topics, or full business overview]"
+  ]
+ ],
+ "objectives": [
+  "[Top-ranked topic that fits this meeting type]",
+  "[Second topic]",
+  "[Third topic]"
+ ],
+ "topics": [
+  {
+   "heading": "[Focus area name] ([Category])",
+   "mechanism": "[Credit mechanism in one or two sentences: why it matters to repayment.]",
+   "questions": [
+    {
+     "id": "example_a",
+     "must": true,
+     "text": "[Must-ask question, one data point, neutral and open-ended.]",
+     "probe": "[Follow-up probe.]",
+     "source": "[Focus area, gap or risk it comes from]",
+     "need": "[What we need to see]",
+     "changes": "[What it changes]",
+     "docs": "[Document, page], or no document page cited"
+    },
+    {
+     "id": "example_b",
+     "text": "[Question]",
+     "probe": "[Probe]",
+     "source": "[Focus area, gap or risk]",
+     "need": "[What we need to see]",
+     "changes": "[What it changes]",
+     "docs": "[Document, page]"
+    }
+   ]
+  },
+  {
+   "heading": "[Next focus area] ([Category])",
+   "mechanism": "[Credit mechanism.]",
+   "questions": [
+    {
+     "id": "example_c",
+     "text": "[Question]",
+     "probe": "[Probe]",
+     "source": "[Gap or conflict finding it comes from]",
+     "need": "[What we need to see]",
+     "changes": "[What it changes]",
+     "docs": "[Document, page]"
+    }
+   ]
+  }
+ ],
+ "requests_note": "[Gaps deferred from the spoken list, and documents to request after the meeting.]",
+ "requests": [
+  {
+   "id": "example_request",
+   "text": "[Request naming the document, dataset and period]"
+  }
+ ],
+ "gap_tables": [
+  {
+   "label": "[Category] ([n] high, [n] medium, [n] low)",
+   "rows": [
+    [
+     "[High, Medium or Low]",
+     "[Topic]",
+     "[Description as written]",
+     "[Diligence ask as written]",
+     "Asked in question {q:example_a}, or Deferred to request {r:example_request}"
+    ]
+   ]
+  }
+ ],
+ "sources": [
+  [
+   "[Document]",
+   "[Pages cited]"
+  ]
+ ],
+ "findings": [
+  [
+   "[Item]",
+   "[Finding with figures from both sources]",
+   "[Basis difference or mechanism]",
+   "Question {q:example_b}"
+  ]
+ ],
+ "peer": {
+  "intro": "[Which peers, what they do and do not disclose, and any limit on comparison.]",
+  "table": [
+   [
+    "[Company, period]",
+    "[Revenue]",
+    "[EBITDA and basis]",
+    "[Margin]",
+    "[Leverage]"
+   ]
+  ],
+  "signals": [
+   [
+    "[Signal]",
+    "[What the peer filings show]",
+    "[What the deal documents show]",
+    "Question {q:example_c}"
+   ]
+  ],
+  "closing": "[Signals left out, and why.]"
+ },
+ "claims_note": "[Where the support for these claims comes from.]",
+ "claims": [
+  [
+   "[Claim and where it is made]",
+   "[What the documents support]",
+   "[Diligence request]"
+  ]
+ ]
+}

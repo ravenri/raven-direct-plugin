@@ -1,0 +1,202 @@
+{
+ "company": "[Company]",
+ "meta_line": "[Project]  \u00b7  USD in millions (MM)  \u00b7  Actuals (A) unless marked B (budget) or P (projected)  \u00b7  EBITDA (earnings before interest, taxes, depreciation and amortization) basis: [layer title]",
+ "stale_note": "[Optional: one line giving the dashboard's own stated reason when it is stale. Delete the field when not stale.]",
+ "italic_line": "Application: [..]  \u00b7  Delivery: [..]  \u00b7  Customers: [..]  \u00b7  Revenue: [..]",
+ "transaction": {
+  "facilities": "[facilities]",
+  "sponsor_equity": "[amount]",
+  "total_capitalization": "[amount and basis]",
+  "leverage": "[as stated]"
+ },
+ "business": [
+  "[Paragraph 1: what it does, who buys it, how delivered, where it operates]",
+  "[Paragraph 2: scale with periods and what supports revenue visibility]"
+ ],
+ "revenue": {
+  "col_a": "[Period A]",
+  "col_b": "[Period B]",
+  "col_share": "Share of [Period B] revenue",
+  "rows": [
+   {
+    "name": "[Company's own stream name]",
+    "a": "[ ]",
+    "b": "[ ]",
+    "share": "[ ]"
+   }
+  ],
+  "totals": [
+   {
+    "name": "[Total revenue]",
+    "a": "[ ]",
+    "b": "[ ]",
+    "share": ""
+   }
+  ],
+  "note": "[What is committed and what is transactional; pricing; items not disclosed]",
+  "credit": "[One or two sentences]"
+ },
+ "market": {
+  "position": "[Position paragraph]",
+  "barriers": {
+   "Regulatory requirements": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Economies of scale": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Capital requirements": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Scarcity of input resources": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "R&D requirements": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Intangible assets": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Network effects": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Distribution and channel access": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   },
+   "Experience curve": {
+    "level": "[stated verdict]",
+    "evidence": "[one line]"
+   }
+  },
+  "overall": "[stated verdict]",
+  "overall_note": "[Counts, direction, switching cost statement]",
+  "credit": "[One or two sentences]"
+ },
+ "customers": {
+  "p1": "[Composition and concentration]",
+  "p2": "[Tenure, wins and losses]",
+  "facts": [
+   {
+    "measure": "Clients",
+    "value": "[ ]"
+   },
+   {
+    "measure": "Top 5 and largest client",
+    "value": "[ ]"
+   },
+   {
+    "measure": "Backlog",
+    "value": "[ ]"
+   },
+   {
+    "measure": "ARR (annual recurring revenue) up for renewal",
+    "value": "[ ]"
+   },
+   {
+    "measure": "Net revenue retention",
+    "value": "[ ]"
+   },
+   {
+    "measure": "Satisfaction evidence",
+    "value": "[ ]"
+   }
+  ],
+  "contract": "[Contract structure]",
+  "credit": "[Concentration read with renewal timing]"
+ },
+ "financial": {
+  "cols": [
+   "[A]",
+   "[A]",
+   "[A]",
+   "[A]"
+  ],
+  "rows": [
+   {
+    "label": "Revenue",
+    "key": true,
+    "vals": [
+     "[ ]",
+     "[ ]",
+     "[ ]",
+     "[ ]"
+    ]
+   }
+  ],
+  "footnote": "[Dash meaning and perimeter]",
+  "paragraph": "[Actuals trend; projected figures marked P]",
+  "credit": "[One or two sentences]",
+  "sources": "Sources: [document, pages]."
+ },
+ "ai": {
+  "p1": "[Status]",
+  "p2": "[Threat and opportunity as stated; evidence limits]",
+  "table": [
+   {
+    "exposure": "[ ]",
+    "revenue": "[ ]",
+    "basis": "[ ]"
+   }
+  ],
+  "credit": "[One or two sentences]"
+ },
+ "issues": [
+  {
+   "issue": "[Plain-noun issue]",
+   "type": "Business",
+   "evidence": "[Stated figures with period and perimeter]",
+   "implication": "[One sentence]"
+  }
+ ],
+ "metrics": {
+  "revenue_lines": {
+   "value": "[company value or Not disclosed]"
+  },
+  "arr": {
+   "value": "[company value or Not disclosed]"
+  },
+  "billings": {
+   "value": "[company value or Not disclosed]"
+  },
+  "services_mix": {
+   "value": "[company value or Not disclosed]"
+  },
+  "gross_retention": {
+   "value": "[company value or Not disclosed]"
+  },
+  "ndr": {
+   "value": "[company value or Not disclosed]"
+  },
+  "concentration": {
+   "value": "[company value or Not disclosed]"
+  },
+  "smb": {
+   "value": "[company value or Not disclosed]"
+  },
+  "gross_margin": {
+   "value": "[company value or Not disclosed]"
+  },
+  "ebitda_margin": {
+   "value": "[company value or Not disclosed]"
+  },
+  "rule40": {
+   "value": "[company value or Not disclosed]"
+  },
+  "sales_eff": {
+   "value": "[company value or Not disclosed]"
+  },
+  "cash_conv": {
+   "value": "[company value or Not disclosed]"
+  }
+ },
+ "open_diligence": "[Up to five asks]",
+ "reconcile_note": "[Optional: borrower figures that do not reconcile, each with both figures]"
+}

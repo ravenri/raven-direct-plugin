@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basket capacity: Project Example</title>
+<style>
+  :root{
+    --ink:#14243f; --paper:#eceff4; --card:#ffffff; --line:#dde1e9;
+    --text:#1b2430; --muted:#5c6572;
+    --teal:#0f7a5f; --violet:#5b52c4; --steel:#2f6f9e; --slate:#7c8493; --amber:#b4611f; --rose:#a63b52;
+    --open:#1c7a54; --shut:#b4611f; --track:#e6e9ef;
+    --shadow:0 1px 2px rgba(20,36,63,.04),0 6px 24px rgba(20,36,63,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55;font-feature-settings:"tnum" 1}
+  .wrap{max-width:920px;margin:0 auto;padding:36px 24px 70px}
+  .num{font-family:Newsreader,Georgia,serif;font-variant-numeric:tabular-nums}
+  .kicker{font-size:12px;letter-spacing:.02em;color:var(--teal);font-weight:600;margin:0 0 8px}
+  h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:29px;line-height:1.2;margin:0 0 8px;color:var(--ink)}
+  .lede{font-size:14px;color:var(--muted);max-width:78ch;margin:0}
+  .terms{margin:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media(max-width:700px){.terms{grid-template-columns:1fr}}
+  .grp{margin-bottom:14px}
+  .grp-h{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;margin:0 0 6px}
+  .terms ul{list-style:none;padding:0;margin:0;display:grid;gap:5px}
+  .terms li{font-size:13px;padding-left:13px;position:relative;max-width:62ch}
+  .terms li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--slate)}
+  .terms li b{color:var(--ink)}
+  .flag{color:var(--amber)}
+  .conf{color:var(--open);font-weight:500}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px;margin:20px 0 0}
+  .ctlrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+  @media(max-width:760px){.ctlrow{grid-template-columns:1fr 1fr}}
+  .ctl label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .ctl .val{font-family:Newsreader,Georgia,serif;font-size:16px;color:var(--ink)}
+  input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:var(--track);border-radius:4px;margin:4px 0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--ink);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(20,36,63,.3)}
+  .togrow{display:flex;flex-wrap:wrap;gap:18px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:18px;font-size:12.5px}
+  .toggle{display:flex;align-items:center;gap:7px;color:var(--text)}
+  .toggle input{width:15px;height:15px;accent-color:var(--violet)}
+  .seg-toggle{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;font-size:11.5px}
+  .seg-toggle button{border:none;background:var(--card);padding:5px 10px;cursor:pointer;color:var(--muted);font-family:inherit;font-weight:500}
+  .seg-toggle button.on{background:var(--ink);color:#fff}
+  .sub-h{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px}
+  .total{margin:0 0 6px;display:flex;align-items:baseline;gap:10px}
+  .total .tlabel{font-size:12px;color:var(--muted)}
+  .total .big{font-family:Newsreader,Georgia,serif;font-size:24px;color:var(--ink)}
+  .bar{position:relative;height:32px;border-radius:7px;background:var(--track);overflow:hidden;display:flex;margin:8px 0 3px}
+  .seg{height:100%;transition:width .15s ease}
+  .seg.free{background:var(--teal)} .seg.ratio{background:var(--violet)} .seg.gen{background:var(--steel)} .seg.liens{background:var(--amber)}
+  .barfill{height:100%;background:var(--violet);transition:width .15s ease}
+  .barfill2{height:100%;background:var(--steel);transition:width .15s ease}
+  .scale{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-bottom:10px}
+  .legend{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 16px;font-size:12.5px;margin-bottom:4px}
+  @media(max-width:700px){.legend{grid-template-columns:1fr}}
+  .lg{display:flex;align-items:flex-start;gap:7px}
+  .sw{width:10px;height:10px;border-radius:2px;margin-top:4px;flex:none}
+  .lg .amt{font-family:Newsreader,Georgia,serif;color:var(--ink)}
+  .lg .d{color:var(--muted);font-size:11.5px}
+  .footlist{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .subsection{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .reads{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+  @media(max-width:760px){.reads{grid-template-columns:1fr}}
+  .read{border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  .read.rp{border-top:3px solid var(--violet)} .read.inv{border-top:3px solid var(--steel)} .read.jdp{border-top:3px solid var(--rose)}
+  .r-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+  .r-name{font-size:12px;font-weight:600;color:var(--ink)}
+  .chip{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+  .chip.open{background:#e5f2ec;color:var(--open)} .chip.shut{background:#f6ead9;color:var(--shut)}
+  .r-big{font-family:Newsreader,Georgia,serif;font-size:20px;color:var(--ink)}
+  .r-sub{font-size:11px;color:var(--muted);margin-top:2px}
+  .gatestrip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  @media(max-width:760px){.gatestrip{grid-template-columns:1fr}}
+  .gate{border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .gate .g-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+  .gate .g-name{font-size:12px;font-weight:600;color:var(--ink)}
+  .gate .g-sub{font-size:11px;color:var(--muted)}
+  .notes{margin-top:26px;font-size:12.5px}
+  .notes h2{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px}
+  .notes ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .notes li{padding-left:14px;position:relative;max-width:84ch}
+  .notes li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--slate)}
+  .foot{font-size:11px;color:var(--muted);margin-top:26px;padding-top:14px;border-top:1px solid var(--line);max-width:84ch}
+  strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="kicker">Basket mechanics &middot; reference model</p>
+<h1>Basket capacity &mdash; Project Example (Example Parent, LLC)</h1>
+<p class="lede">Two-tranche structure: executed First Lien and Second Lien Credit Agreements (Apr-16-25), cov-lite for the term loans with a springing First Lien Net Leverage covenant on the revolver only. This model is scoped to the First Lien agreement's own baskets and gates; Second Lien terms are referenced only where they cross-affect First Lien capacity. Figures and section citations are read from the executed agreements, not carried over from any other deal.</p>
+
+<div class="terms">
+  <div>
+    <div class="grp"><div class="grp-h">Debt incurrence (First Lien)</div><ul>
+      <li>Free &amp; Clear basket: greater of <b>$437.3MM</b> or <b>100%</b> of Consolidated EBITDA, no test (&sect;2.19 / Maximum Incremental Facilities Amount).</li>
+      <li>Ratio incremental: unlimited if pro forma &le;<b>4.80x</b> First Lien Net Leverage (pari), &le;<b>6.00x</b> Secured Net Leverage (junior lien), or &le;<b>7.00x</b> Total Net Leverage (unsecured) &mdash; non-guarantor cap greater of $220.0MM/50% EBITDA.</li>
+      <li>General debt basket: greater of <b>$220.0MM</b> or <b>50%</b> of Consolidated EBITDA, plus unused Free &amp; Clear capacity (&sect;6.01(bb)).</li>
+      <li class="flag">Contribution debt (builder, not modeled as a slider): 200% of net cash proceeds of Qualified Stock/capital contributions, excluding amounts already used under the Cumulative Equity Amount.</li>
+      <li class="flag">Cross-agreement debt is a separate raise permission, not summed into this aggregate: up to $525.0MM of Second Lien debt permitted under the First Lien agreement; up to $2.43B of First Lien debt permitted under the Second Lien agreement.</li>
+      <li class="conf">Section 1.11 confirms baskets may be accumulated, combined, divided, and later reclassified within the same covenant &mdash; not a hypothetical for this deal.</li>
+      <li>MFN: 50bps cap on qualifying floating-rate pari term loans; sunsets 24 months (1L) / 36 months (2L) after closing; excludes up to $220.0MM/50% EBITDA (1L) or $110.0MM/25% EBITDA (2L) of new loans from the test.</li>
+    </ul></div>
+    <div class="grp"><div class="grp-h">Liens (First Lien)</div><ul>
+      <li>General liens basket: greater of <b>$220.0MM</b> or <b>50%</b> of Consolidated EBITDA, plus unused Free &amp; Clear capacity (&sect;6.02(r)).</li>
+      <li class="flag">Identical figure to the general debt basket &mdash; sized to fully secure it.</li>
+      <li>Not summed into debt capacity above; a lien permission, not new borrowing.</li>
+    </ul></div>
+  </div>
+  <div>
+    <div class="grp"><div class="grp-h">Investments</div><ul>
+      <li>Ratio: unrestricted at &le;<b>5.50x</b> Total Net Leverage Ratio (&sect;6.04(x)).</li>
+      <li>General basket: greater of <b>$220.0MM</b> or <b>50%</b> of Consolidated EBITDA, plus unused &sect;6.08(k) dividend capacity, plus the Available Prepayment Capacity Amount (&sect;6.04(w)).</li>
+      <li class="flag">Available Prepayment Capacity Amount sizing mechanics are not in the reviewed excerpts &mdash; footnoted, not modeled.</li>
+      <li>Non-Guarantor investment cap: greater of $220.0MM/50% EBITDA (&sect;6.04(d)/(f)).</li>
+      <li class="flag">Unrestricted Subsidiary investment basket: greater of $154.0MM/35% EBITDA &mdash; the agreement's own carve-out, explicitly barred from reclassification in or out (&sect;6.04(bb)).</li>
+    </ul></div>
+    <div class="grp"><div class="grp-h">Distributions &amp; shared reservoirs</div><ul>
+      <li>Restricted payments (dividends): unrestricted at &le;<b>5.00x</b> Total Net Leverage (&sect;6.08(s)).</li>
+      <li>Junior debt payments: unrestricted at the <b>same 5.00x</b> gate (&sect;6.11(a)(vi)) &mdash; RP and JDP share one gate.</li>
+      <li>RP general basket: greater of $132.0MM/30% EBITDA (&sect;6.08(k)). JDP general basket: same $132.0MM/30% EBITDA plus unused &sect;6.08(k) capacity (&sect;6.11(a)(v)(1)).</li>
+      <li><b>Cumulative Amount</b> (the agreement's own term): starter greater of $220.0MM/50% EBITDA; builds from the greater of retained Excess Cash Flow or 50% Consolidated Net Income from Jan 1, 2025. Shared by RP, Investments, and JDP (&sect;6.04(u)(i)/6.08(h)(i)/6.11(a)(iv)).</li>
+      <li><b>Cumulative Equity Amount</b>: a second, separate reservoir built from post-closing equity proceeds (the functional equivalent of Excluded Contributions). Also shared by RP, Investments, and JDP (&sect;6.04(u)(ii)/6.08(h)(ii)/6.11(a)(iv)(y)).</li>
+    </ul></div>
+  </div>
+  <div style="grid-column:1/-1">
+    <div class="grp"><div class="grp-h">Documentation notes</div><ul>
+      <li>Financial covenant is springing and revolver-only: <b>8.10x</b> First Lien Net Leverage Ratio, tested only if Revolving Loans/L/Cs exceed <b>40.0%</b> of Revolving Commitments (&sect;6.10). Equity cure available: 5 uses over the life of the facility, at least 2 of every 4 fiscal quarters with no cure, capped at the minimum amount required (&sect;8.04).</li>
+      <li class="flag">Preferred equity instrument not in the reviewed package &mdash; dividend rate, cash-vs-PIK mechanics, and covenant treatment are unconfirmed; potential cash leakage outside the modeled RP baskets.</li>
+      <li class="flag">"Excluded Contributions" is not the agreement's defined term here &mdash; its functional equivalent is the Cumulative Equity Amount, used per the reservoir description above.</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="ctlrow">
+    <div class="ctl"><label><span>Consolidated EBITDA</span><span class="val">$<span id="eOut">437</span>MM</span></label><input id="ebitda" type="range" min="200" max="700" step="5" value="437"></div>
+    <div class="ctl"><label><span>First lien net leverage</span><span class="val"><span id="flOut">5.00</span>x</span></label><input id="fl" type="range" min="2" max="10" step="0.05" value="5.00"><div style="font-size:10.5px;color:var(--muted)">Gates 4.80x/6.00x/7.00x incremental tiers and the 8.10x springing test.</div></div>
+    <div class="ctl"><label><span>Total net leverage</span><span class="val"><span id="lOut">5.25</span>x</span></label><input id="lev" type="range" min="2" max="9" step="0.05" value="5.25"><div style="font-size:10.5px;color:var(--muted)">Gates RP/JDP (5.00x) and Investments (5.50x). Modeled independently of first lien leverage.</div></div>
+  </div>
+  <div class="ctlrow">
+    <div class="ctl"><span style="font-size:12px;color:var(--muted);font-weight:500;display:block;margin-bottom:8px">Revolver utilization</span><div class="seg-toggle" id="revToggle"><button data-v="under" class="on">&le;40% (untested)</button><button data-v="over">&gt;40% (springs)</button></div></div>
+    <div class="ctl"><label><span>Cumulative Amount</span><span class="val">$<span id="caOut">220</span>MM</span></label><input id="cumAmt" type="range" min="220" max="520" step="10" value="220"><div style="font-size:10.5px;color:var(--muted)">Floor is greater of $220MM/50% EBITDA. Build above the floor is a free input &mdash; see note below.</div></div>
+    <div class="ctl"><label><span>Cumulative Equity Amount</span><span class="val">$<span id="ceOut">0</span>MM</span></label><input id="cumEq" type="range" min="0" max="300" step="10" value="0"><div style="font-size:10.5px;color:var(--muted)">No stated floor &mdash; builds only from post-closing equity proceeds.</div></div>
+  </div>
+
+  <div class="ctlrow" style="grid-template-columns:2fr 1fr">
+    <div class="ctl"><label><span>Hypothetical draw</span><span class="val">$<span id="drawOut">0</span>MM</span></label><input id="draw" type="range" min="0" max="1500" step="10" value="0"><div style="font-size:10.5px;color:var(--muted)">Sequenced through the pari ratio layer first, then Free &amp; Clear, then the general basket.</div></div>
+    <div class="ctl"><span style="font-size:12px;color:var(--muted);font-weight:500;display:block;margin-bottom:8px">Draw tier</span><div class="seg-toggle" id="drawTierToggle"><button data-v="pari" class="on">Pari 1L</button><button data-v="junior">Junior lien</button><button data-v="unsecured">Unsecured</button></div></div>
+  </div>
+
+  <div class="sub-h">Debt incurrence capacity (First Lien)</div>
+  <div class="total"><span class="tlabel">Aggregate</span><span class="big num">$<span id="totalOut">874</span>MM</span></div>
+  <div class="r-sub" id="totalSplit" style="margin:0 0 10px"></div>
+  <div class="bar"><div class="seg free" id="segFree"></div><div class="seg ratio" id="segRatio"></div><div class="seg gen" id="segGen"></div></div>
+  <div class="scale"><span>$0</span><span>scale to $3,000MM</span></div>
+  <div class="legend">
+    <div class="lg"><span class="sw" style="background:var(--teal)"></span><div><span class="amt">$<span id="aFree">437</span>MM</span> Free &amp; Clear basket <span class="d">greater of $437.3MM or 100% EBITDA</span></div></div>
+    <div class="lg"><span class="sw" style="background:var(--violet)"></span><div><span class="amt">$<span id="aRatio">0</span>MM</span> Ratio incremental (pari) <span class="d" id="dRatio"></span></div></div>
+    <div class="lg"><span class="sw" style="background:var(--steel)"></span><div><span class="amt">$<span id="aGen">218</span>MM</span> General debt basket <span class="d">greater of $220MM/50% EBITDA</span></div></div>
+  </div>
+  <div class="footlist">Not headlined: Contribution debt (200% of equity proceeds, builder); cross-agreement debt ($525MM 2L capacity, separate raise); sale-leaseback debt (greater of $66MM/15% EBITDA); non-guarantor debt sub-cap (greater of $220MM/50% EBITDA, inside the ratio basket above, not additive).</div>
+
+  <div class="subsection" id="drawResultBlock" style="display:none">
+    <div class="sub-h">Draw sequencing &mdash; where the $<span id="drawEcho">0</span>MM lands</div>
+    <div class="legend" id="drawSeqLegend"></div>
+    <div class="reads" style="margin-top:10px">
+      <div class="read" style="border-top:3px solid var(--ink)"><div class="r-top"><span class="r-name">Post-draw 1L leverage</span></div><div class="r-big num" id="postFL">5.00x</div><div class="r-sub" id="postFLsub"></div></div>
+      <div class="read" style="border-top:3px solid var(--ink)"><div class="r-top"><span class="r-name">Post-draw total leverage</span></div><div class="r-big num" id="postTNL">5.25x</div><div class="r-sub" id="postTNLsub"></div></div>
+      <div class="read" style="border-top:3px solid var(--amber)"><div class="r-top"><span class="r-name">Pari ratio door, post-draw</span></div><div class="r-big num" id="postRatioRoom">$0MM</div><div class="r-sub">remaining incremental pari ratio room</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="sub-h">Liens capacity (separate from debt $ above)</div>
+    <div class="bar"><div class="seg liens" id="segLiens"></div></div>
+    <div class="scale"><span>$0</span><span>scale to $700MM</span></div>
+    <div class="legend"><div class="lg"><span class="sw" style="background:var(--amber)"></span><div><span class="amt">$<span id="aLiens">218</span>MM</span> General liens basket &mdash; identical to the general debt basket, sized to fully secure it</div></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="sub-h">Distribution capacity &mdash; own general basket only</div>
+    <div class="reads">
+      <div class="read rp"><div class="r-top"><span class="r-name">Restricted payments</span><span class="chip" id="chipRP">shut</span></div><div class="r-big num" id="bigRP">$131MM</div><div class="r-sub" id="subRP"></div></div>
+      <div class="read jdp"><div class="r-top"><span class="r-name">Junior debt payments</span><span class="chip" id="chipJDP">shut</span></div><div class="r-big num" id="bigJDP">$131MM</div><div class="r-sub" id="subJDP"></div></div>
+      <div class="read inv"><div class="r-top"><span class="r-name">Investments</span><span class="chip" id="chipInv">open</span></div><div class="r-big num" id="bigInv">Unrestricted</div><div class="r-sub" id="subInv"></div></div>
+    </div>
+    <div class="footlist" style="margin-top:8px">Figures above are each card's own fixed general basket only. All three also draw on the shared reservoirs below &mdash; those are <b>not</b> additive to each card independently; see the shared-pool note.</div>
+
+    <div class="sub-h" style="margin-top:16px">Shared reservoirs &mdash; drawn down by whichever of RP / Investments / JDP uses them first</div>
+    <div class="bar"><div class="barfill" id="barfillCA"></div></div>
+    <div class="scale"><span>$0</span><span>Cumulative Amount &mdash; scale to $600MM</span></div>
+    <div class="bar" style="margin-top:14px"><div class="barfill2" id="barfillCE"></div></div>
+    <div class="scale"><span>$0</span><span>Cumulative Equity Amount &mdash; scale to $400MM</span></div>
+    <div class="footlist" id="flagCert">Neither reservoir's build above its floor is calculated here. The Cumulative Amount build (retained ECF or 50% Consolidated NI) and the Cumulative Equity Amount build (equity proceeds) are heavily deal-specific and, in practice, come off a compliance certificate or a tracked ledger, not a bottom-up estimate &mdash; the sliders above let you input those certificate figures directly.</div>
+  </div>
+
+  <div class="gatestrip">
+    <div class="gate"><div class="g-top"><span class="g-name">Incremental (pari)</span><span class="chip" id="chip1">open</span></div><div class="g-sub">&le; 4.80x first lien</div></div>
+    <div class="gate"><div class="g-top"><span class="g-name">Incremental (junior lien)</span><span class="chip" id="chip2">open</span></div><div class="g-sub">&le; 6.00x secured</div></div>
+    <div class="gate"><div class="g-top"><span class="g-name">Incremental (unsecured)</span><span class="chip" id="chip3">open</span></div><div class="g-sub">&le; 7.00x total</div></div>
+    <div class="gate"><div class="g-top"><span class="g-name">Springing covenant</span><span class="chip" id="chip4">open</span></div><div class="g-sub">&le; 8.10x first lien &mdash; only tested &gt;40% revolver usage</div></div>
+    <div class="gate"><div class="g-top"><span class="g-name">RP / Junior debt payments</span><span class="chip" id="chip5">shut</span></div><div class="g-sub">&le; 5.00x total &mdash; shared gate</div></div>
+    <div class="gate"><div class="g-top"><span class="g-name">Investments</span><span class="chip" id="chip6">open</span></div><div class="g-sub">&le; 5.50x total</div></div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>Reading notes</h2>
+  <ul>
+    <li>Two leverage bases gate different things: First Lien Net Leverage gates the incremental pari/junior-lien/unsecured tiers and the springing covenant; Total Net Leverage gates all three distribution ratios (RP, JDP, Investments). They're modeled with independent sliders here, not derived from one another.</li>
+    <li>Reclassification is confirmed, not hypothetical, on this deal: Section 1.11 states baskets may be accumulated, combined, divided, and reclassified within the same covenant.</li>
+    <li>Two separate reservoirs &mdash; Cumulative Amount and Cumulative Equity Amount &mdash; both feed all three of RP, Investments, and JDP. They're shown once each as shared pools rather than repeated inside every distribution card, so the model doesn't overstate capacity by counting the same dollar three times.</li>
+    <li>The springing covenant only binds the revolving lenders, and only above 40% revolver utilization &mdash; below that threshold, the term loans carry no maintenance test at all, and the 8.10x level itself is never tested.</li>
+    <li>The Unrestricted Subsidiary investment basket ($154MM/35% EBITDA) is the agreement's own exception to its general reclassification rule &mdash; explicitly barred from reallocation in or out, unlike every other basket here.</li>
+    <li>Cross-agreement debt capacity ($525MM of 2L debt permitted under the 1L agreement; $2.43B of 1L debt permitted under the 2L agreement) is a separate raise permission tracked in the other agreement, not part of this First Lien aggregate.</li>
+  </ul>
+</div>
+
+<p class="foot">Model notes: first lien leverage gates the incremental debt tiers and the springing revolver covenant; total leverage gates RP, junior debt payments, and investments. Distribution capacity below a gate is shown as unrestricted, subject to no default. Figures are drawn from a sample deal's executed First Lien and Second Lien Credit Agreements via Raven's legal-review extraction, except where marked illustrative or flagged as a data gap.</p>
+</div>
+
+<script>
+(function(){
+  var E=document.getElementById('ebitda'), FL=document.getElementById('fl'), L=document.getElementById('lev');
+  var CA=document.getElementById('cumAmt'), CE=document.getElementById('cumEq');
+  var eOut=document.getElementById('eOut'), flOut=document.getElementById('flOut'), lOut=document.getElementById('lOut'), caOut=document.getElementById('caOut'), ceOut=document.getElementById('ceOut');
+  var totalOut=document.getElementById('totalOut'), totalSplit=document.getElementById('totalSplit');
+  var segFree=document.getElementById('segFree'), segRatio=document.getElementById('segRatio'), segGen=document.getElementById('segGen'), segLiens=document.getElementById('segLiens');
+  var aFree=document.getElementById('aFree'), aRatio=document.getElementById('aRatio'), aGen=document.getElementById('aGen'), aLiens=document.getElementById('aLiens');
+  var dRatio=document.getElementById('dRatio');
+  var chipRP=document.getElementById('chipRP'), chipInv=document.getElementById('chipInv'), chipJDP=document.getElementById('chipJDP');
+  var bigRP=document.getElementById('bigRP'), subRP=document.getElementById('subRP'), bigInv=document.getElementById('bigInv'), subInv=document.getElementById('subInv'), bigJDP=document.getElementById('bigJDP'), subJDP=document.getElementById('subJDP');
+  var barfillCA=document.getElementById('barfillCA'), barfillCE=document.getElementById('barfillCE');
+  var chip1=document.getElementById('chip1'), chip2=document.getElementById('chip2'), chip3=document.getElementById('chip3'), chip4=document.getElementById('chip4'), chip5=document.getElementById('chip5'), chip6=document.getElementById('chip6');
+  var revBtns=document.querySelectorAll('#revToggle button'); var revState='under';
+  revBtns.forEach(function(b){b.addEventListener('click',function(){revState=b.getAttribute('data-v');revBtns.forEach(function(x){x.classList.remove('on')});b.classList.add('on');update();});});
+  var drawTierBtns=document.querySelectorAll('#drawTierToggle button'); var drawTier='pari';
+  drawTierBtns.forEach(function(b){b.addEventListener('click',function(){drawTier=b.getAttribute('data-v');drawTierBtns.forEach(function(x){x.classList.remove('on')});b.classList.add('on');update();});});
+  var D=document.getElementById('draw'), drawOut=document.getElementById('drawOut'), drawEcho=document.getElementById('drawEcho');
+  var drawResultBlock=document.getElementById('drawResultBlock'), drawSeqLegend=document.getElementById('drawSeqLegend');
+  var postFL=document.getElementById('postFL'), postFLsub=document.getElementById('postFLsub'), postTNL=document.getElementById('postTNL'), postTNLsub=document.getElementById('postTNLsub'), postRatioRoom=document.getElementById('postRatioRoom');
+  var SCALE=3000, LSCALE=700, CASCALE=600, CESCALE=400;
+  function money(x){return Math.round(x).toLocaleString('en-US');}
+  function gate(chip,open){chip.textContent=open?'open':'shut';chip.className='chip '+(open?'open':'shut');}
+  function update(){
+    var e=+E.value, fl=+FL.value, tnl=+L.value, ca=+CA.value, ce=+CE.value;
+    var caFloor=0.50*e; if(caFloor<220) caFloor=220; CA.min=caFloor; if(ca<caFloor){ca=caFloor; CA.value=caFloor;}
+    eOut.textContent=e; flOut.textContent=fl.toFixed(2); lOut.textContent=tnl.toFixed(2); caOut.textContent=money(ca); ceOut.textContent=money(ce);
+
+    var free=Math.max(437.3,1.00*e);
+    var headPari=Math.max(0,4.80-fl);
+    var ratio=headPari*e;
+    var general=Math.max(220,0.50*e);
+    var total=free+ratio+general;
+    totalOut.textContent=money(total);
+    var noTest=free+general;
+    totalSplit.textContent='$'+money(noTest)+'MM available today without clearing a ratio test \u00b7 $'+money(ratio)+'MM more requires headroom under the 4.80x pari first lien covenant';
+    aFree.textContent=money(free); aRatio.textContent=money(ratio); aGen.textContent=money(general);
+    dRatio.textContent=(fl<=4.80)?headPari.toFixed(2)+'x headroom to 4.80x':'unavailable above 4.80x';
+    segFree.style.width=(Math.min(free,SCALE)/SCALE*100)+'%';
+    segRatio.style.width=(Math.min(ratio,SCALE)/SCALE*100)+'%';
+    segGen.style.width=(Math.min(general,SCALE)/SCALE*100)+'%';
+
+    var liens=Math.max(220,0.50*e);
+    aLiens.textContent=money(liens);
+    segLiens.style.width=(Math.min(liens,LSCALE)/LSCALE*100)+'%';
+
+    var draw=+D.value;
+    drawOut.textContent=money(draw); drawEcho.textContent=money(draw);
+    if(draw>0){
+      drawResultBlock.style.display='block';
+      var remaining=draw;
+      var seq=[
+        {name:'Pari ratio layer (pre-draw room)', cap:ratio, color:'var(--violet)'},
+        {name:'Free & Clear basket', cap:free, color:'var(--teal)'},
+        {name:'General debt basket', cap:general, color:'var(--steel)'}
+      ];
+      var legendHtml='';
+      seq.forEach(function(layer){
+        var used=Math.min(remaining,layer.cap);
+        remaining-=used;
+        legendHtml+='<div class="lg"><span class="sw" style="background:'+layer.color+'"></span><div><span class="amt">$'+money(used)+'MM</span> '+layer.name+' <span class="d">of $'+money(layer.cap)+'MM room</span></div></div>';
+      });
+      if(remaining>0.5){
+        legendHtml+='<div class="lg"><span class="sw" style="background:var(--rose)"></span><div><span class="amt">$'+money(remaining)+'MM</span> exceeds modeled basket capacity <span class="d">would need an additional permission not modeled here</span></div></div>';
+      }
+      drawSeqLegend.innerHTML=legendHtml;
+
+      var postFLval = drawTier==='pari' ? (fl + draw/e) : fl;
+      var postTNLval = tnl + draw/e;
+      postFL.textContent=postFLval.toFixed(2)+'x';
+      postFLsub.textContent=(drawTier==='pari')?'up from '+fl.toFixed(2)+'x base':'unaffected \u2014 draw sits outside the pari first lien basis';
+      postTNL.textContent=postTNLval.toFixed(2)+'x';
+      postTNLsub.textContent='up from '+tnl.toFixed(2)+'x base';
+      var postRatioHead=Math.max(0,4.80-postFLval)*e;
+      postRatioRoom.textContent='$'+money(postRatioHead)+'MM';
+    } else {
+      drawResultBlock.style.display='none';
+    }
+    var effFL = draw>0 ? (drawTier==='pari' ? fl+draw/e : fl) : fl;
+    var effTNL = draw>0 ? (tnl+draw/e) : tnl;
+
+    var fixedRP=Math.max(132,0.30*e);
+    var fixedInv=Math.max(220,0.50*e);
+    var fixedJDP=Math.max(132,0.30*e);
+
+    if(effTNL<=5.00){ bigRP.textContent='Unrestricted'; subRP.textContent='ratio gate open \u2264 5.00x total'; }
+    else { bigRP.textContent='$'+money(fixedRP)+'MM'; subRP.textContent='own fixed basket only \u2014 '+(effTNL-5.00).toFixed(2)+'x to clear'; }
+    if(effTNL<=5.00){ bigJDP.textContent='Unrestricted'; subJDP.textContent='ratio gate open \u2264 5.00x total (shares RP\u2019s gate)'; }
+    else { bigJDP.textContent='$'+money(fixedJDP)+'MM'; subJDP.textContent='own fixed basket only \u2014 '+(effTNL-5.00).toFixed(2)+'x to clear'; }
+    if(effTNL<=5.50){ bigInv.textContent='Unrestricted'; subInv.textContent='ratio gate open \u2264 5.50x total'; }
+    else { bigInv.textContent='$'+money(fixedInv)+'MM'; subInv.textContent='own fixed basket only \u2014 '+(effTNL-5.50).toFixed(2)+'x to clear'; }
+
+    barfillCA.style.width=(Math.min(ca,CASCALE)/CASCALE*100)+'%';
+    barfillCE.style.width=(Math.min(ce,CESCALE)/CESCALE*100)+'%';
+
+    gate(chip1,effFL<=4.80);
+    gate(chip2,effFL<=6.00);
+    gate(chip3,effFL<=7.00);
+    var springTested = revState==='over';
+    gate(chip4, !springTested || effFL<=8.10);
+    gate(chip5,effTNL<=5.00);
+    gate(chip6,effTNL<=5.50);
+    gate(chipRP,effTNL<=5.00); gate(chipJDP,effTNL<=5.00); gate(chipInv,effTNL<=5.50);
+  }
+  [E,FL,L,CA,CE,D].forEach(function(el){el.addEventListener('input',update);});
+  update();
+})();
+</script>
+</body>
+</html>

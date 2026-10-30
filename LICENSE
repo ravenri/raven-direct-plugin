@@ -1,0 +1,46 @@
+Raven Direct Plugin License
+
+Copyright (c) 2026 Raven Risk AI Inc. All rights reserved.
+
+1. Permitted use. You may install and use this plugin, including its skills,
+   templates, and scripts, only to access the Raven service through the Raven
+   Direct connector under a valid Raven account and agreement. The plugin may
+   run inside your own AI platform.
+
+2. Restrictions. You may not copy, modify, distribute, sublicense, sell, or
+   publish this plugin or any part of it, or connect it, or any work derived
+   from it, to any service other than Raven, except as your agreement with
+   Raven expressly allows. Anthropic may host, review, test, and make the
+   plugin available through its directories under the Anthropic Software
+   Directory Terms.
+
+3. Ownership. The plugin and all of its contents remain the property of Raven
+   Risk AI Inc. The plugin's files are visible to anyone who installs it or
+   views its public repository. Visibility does not grant any license beyond
+   Section 1.
+
+4. Outputs and other agreements. Ownership of outputs generated through Raven
+   is governed by your agreement with Raven. Your AI platform is governed by
+   your own agreement with its provider, and Raven is not responsible for that
+   platform. Raven's handling of personal information is described in the
+   Raven Direct Privacy Policy at https://ravenrisk.ai/privacypolicy.
+
+5. No warranty. Except as your agreement with Raven provides, the plugin is
+   provided "as is," without warranty of any kind. Its output is analysis to
+   support credit professionals and is not investment, legal, or credit
+   advice.
+
+6. Limitation of liability. To the extent permitted by law, Raven Risk AI Inc.
+   is not liable for any damages arising from use of the plugin, except as
+   your agreement with Raven provides.
+
+7. Termination. Your right to use the plugin ends when your Raven account or
+   agreement ends. Sections 3 through 6 and Section 8 survive termination.
+
+8. Governing law. If you are a customer of Raven, your agreement with Raven
+   governs, including its governing law and venue, and prevails over this
+   license if they conflict. Otherwise, this license is governed by the laws
+   of the State of New York, without regard to its conflict-of-laws
+   principles, and the state and federal courts located in New York County,
+   New York have exclusive jurisdiction over any dispute arising out of it.
+   Notices to Raven go to the address in your agreement or to info@ravenri.ai.

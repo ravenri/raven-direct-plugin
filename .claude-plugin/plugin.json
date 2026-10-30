@@ -1,0 +1,23 @@
+{
+  "name": "raven-direct",
+  "displayName": "Raven Direct",
+  "version": "1.0.0",
+  "description": "Raven Direct connects Claude to Raven, the AI platform for corporate credit, purpose-built for banks, private credit firms, CLO managers, and institutional lenders and investors. Work with the deals, analysis, financial models, source documents, and portfolio information in your Raven account in plain language, from first screen through underwriting, financial and legal analysis, and ongoing monitoring, with more than 45 ready-made credit skills. A Raven account is required.",
+  "author": {
+    "name": "Raven Risk AI Inc.",
+    "url": "https://ravenrisk.ai"
+  },
+  "homepage": "https://ravenrisk.ai",
+  "repository": "https://github.com/ravenri/raven-direct-plugin",
+  "keywords": [
+    "credit",
+    "private credit",
+    "underwriting",
+    "lending",
+    "covenants",
+    "portfolio analysis"
+  ],
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://ravenrisk.ai/privacypolicy",
+  "license": "Proprietary"
+}

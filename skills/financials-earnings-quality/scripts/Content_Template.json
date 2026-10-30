@@ -1,0 +1,610 @@
+{
+ "title": "Earnings Quality (template)",
+ "blocks": [
+  {
+   "fn": "title",
+   "args": [
+    "Earnings Quality"
+   ]
+  },
+  {
+   "fn": "kv4",
+   "args": [
+    [
+     [
+      "Project and company",
+      "[Project name; company; project used if several matched]",
+      "Sponsor and sector",
+      "[Sponsor; sector]"
+     ],
+     [
+      "Anchor period and basis",
+      "[Anchor period; EBITDA basis label]",
+      "Projection source",
+      "[Model; date; projection period]"
+     ],
+     [
+      "Peer set",
+      "[Available or not available]",
+      "Lowest data confidence",
+      "[Level, among the reads used]"
+     ],
+     [
+      "Reads missing or empty",
+      "[List, or none]",
+      "Stored reads as of",
+      "[Latest and earliest field dates]"
+     ]
+    ]
+   ]
+  },
+  {
+   "fn": "gap",
+   "args": [
+    80
+   ]
+  },
+  {
+   "fn": "noteBox",
+   "args": [
+    "Analyst Note: ",
+    "[One to three sentences, only when a trigger applies: history and projection on different EBITDA bases, a read empty or missing, two reads in conflict, or a stale read.]"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[Terms line, 7.5 pt grey: define EBITDA and any basis labels; state the units; explain \"appears\" and \"suggests\" as inference; explain page references and D numbers.]",
+    {
+     "size": 15,
+     "color": "5A636A",
+     "before": 60,
+     "after": 60
+    }
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "1. Executive Summary"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One sentence: the conclusion on revenue and EBITDA quality and forecast credibility.]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[One sentence with its key figure. **Bold** the key figures.]",
+     "[One sentence with its key figure.]",
+     "[One sentence with its key figure. About 120 words in all; no questions.]"
+    ]
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "2. Revenue Quality"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One-line conclusion with its figure.]"
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Growth and mix]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[One to three bullets, at most two sentences each: growth and mix.]"
+    ]
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Retention]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Retention and churn by product.]"
+    ]
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Concentration and visibility]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Concentration; contract visibility.]"
+    ]
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Durability]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Competitive, barrier and industry evidence on durability. The section totals 4 to 7 bullets.]"
+    ]
+   ]
+  },
+  {
+   "fn": "basis",
+   "args": [
+    "Basis: [source documents as the reads cite them; derived D numbers]"
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table 2.1",
+    "[Revenue and retention by period]",
+    "USD in millions (MM)"
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     3636,
+     2475,
+     2475,
+     2475,
+     2475
+    ],
+    [
+     "left",
+     "right",
+     "right",
+     "right",
+     "right"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Line",
+       "[P1]",
+       "[P2]",
+       "[P3]",
+       "[LTM]"
+      ]
+     },
+     {
+      "c": [
+       "[Line]",
+       "0.0",
+       "0.0",
+       "0.0",
+       "0.0"
+      ]
+     },
+     {
+      "c": [
+       "[Growth or retention line]",
+       "0.0%",
+       "0.0%",
+       "0.0%",
+       "0.0%"
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "fn": "source",
+   "args": [
+    "Source: [source documents as the reads cite them]; derived rows (D number). Credit assessment ratings: [lens name and rating only]."
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "3. EBITDA Quality"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One-line conclusion with its figure.]"
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Margin]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[One to three bullets, at most two sentences each: margin on one basis; gross margin.]"
+    ]
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Cost structure]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Cost lines and cost position; peer margins where a peer set exists.]"
+    ]
+   ]
+  },
+  {
+   "fn": "label",
+   "args": [
+    "[Subheading, for example Cash conversion and reinvestment]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[Cash conversion and reinvestment; structural against temporary. The section totals 4 to 7 bullets.]"
+    ]
+   ]
+  },
+  {
+   "fn": "basis",
+   "args": [
+    "Basis: [source documents; derived D numbers]"
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table 3.1",
+    "[Margins, EBITDA and reinvestment by period]",
+    "USD in millions (MM)"
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     3636,
+     2475,
+     2475,
+     2475,
+     2475
+    ],
+    [
+     "left",
+     "right",
+     "right",
+     "right",
+     "right"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Line",
+       "[P1]",
+       "[P2]",
+       "[P3]",
+       "[LTM]"
+      ]
+     },
+     {
+      "c": [
+       "[Line]",
+       "0.0",
+       "0.0",
+       "0.0",
+       "0.0"
+      ]
+     },
+     {
+      "c": [
+       "[Margin line]",
+       "0.0%",
+       "0.0%",
+       "0.0%",
+       "0.0%"
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "fn": "source",
+   "args": [
+    "Source: [source documents as the reads cite them]. Credit assessment ratings: [lens name and rating only]."
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "4. Forecast Credibility"
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One-line conclusion: reasonable, aggressive or conservative, and the comparison behind the judgment.]"
+   ]
+  },
+  {
+   "fn": "bullets",
+   "args": [
+    [
+     "[4 to 7 bullets: the largest departures first, each with its figures, the comparison and what would have to be true; then any contradiction between reads and what would resolve it. If history and projection are on different bases, the first bullet says so.]"
+    ]
+   ]
+  },
+  {
+   "fn": "basis",
+   "args": [
+    "Basis: [source documents; derived D numbers]"
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table 4.1",
+    "History, projection and benchmark",
+    "basis and period in each cell"
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     1800,
+     2300,
+     2300,
+     2300,
+     1200,
+     3636
+    ],
+    [
+     "left",
+     "left",
+     "left",
+     "left",
+     "left",
+     "left"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Metric",
+       "Historical result",
+       "Projection",
+       "External benchmark",
+       "Departure",
+       "What would have to be true"
+      ]
+     },
+     {
+      "c": [
+       "Revenue growth",
+       "[Result, period, basis]",
+       "[Result, period, basis]",
+       "[Peer or industry, source]",
+       "[Historical, Peer or industry, Unsupported, Not testable, None]",
+       "[Condition]"
+      ]
+     },
+     {
+      "c": [
+       "Gross margin",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]"
+      ]
+     },
+     {
+      "c": [
+       "EBITDA margin",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]"
+      ]
+     },
+     {
+      "c": [
+       "[Major cost category]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]"
+      ]
+     },
+     {
+      "c": [
+       "[Each key assumption the projections list]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[ ]"
+      ]
+     }
+    ],
+    17
+   ]
+  },
+  {
+   "fn": "source",
+   "args": [
+    "Source: [source documents as the reads cite them]. A cell the stored reads do not carry reads \"not in the stored read\"."
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "5. Priority Diligence Questions"
+   ]
+  },
+  {
+   "fn": "numbered",
+   "args": [
+    [
+     "[Question naming the figure or read it comes from. Up to six. Plain numbered list: no framing, no ranking.]",
+     "[Next question.]"
+    ],
+    1
+   ]
+  },
+  {
+   "fn": "h1",
+   "args": [
+    "Appendix A: Inputs and Conflicts",
+    true
+   ]
+  },
+  {
+   "fn": "para",
+   "args": [
+    "[One sentence: what the register covers and which reads were missing or empty.]",
+    {
+     "keepNext": true
+    }
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table A.1",
+    "Inputs register",
+    ""
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     3000,
+     2100,
+     3000,
+     2000,
+     3436
+    ],
+    [
+     "left",
+     "left",
+     "left",
+     "left",
+     "left"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Read (by topic)",
+       "Period covered",
+       "Basis",
+       "Data confidence",
+       "Date"
+      ]
+     },
+     {
+      "c": [
+       "[Historical financials]",
+       "[ ]",
+       "[ ]",
+       "[ ]",
+       "[Field date or \"not dated in the freshness record\"]"
+      ]
+     }
+    ],
+    17
+   ]
+  },
+  {
+   "fn": "caption",
+   "args": [
+    "Table A.2",
+    "Differences between reads",
+    ""
+   ]
+  },
+  {
+   "fn": "table",
+   "args": [
+    [
+     2200,
+     2900,
+     2900,
+     3436,
+     2100
+    ],
+    [
+     "left",
+     "left",
+     "left",
+     "left",
+     "left"
+    ],
+    [
+     {
+      "k": "head",
+      "c": [
+       "Item",
+       "First read",
+       "Second read",
+       "Difference or note",
+       "Type"
+      ]
+     },
+     {
+      "c": [
+       "[Item]",
+       "[Value, read]",
+       "[Value, read]",
+       "[Note; neither is chosen]",
+       "[Numerical conflict, Definition or period difference, or Contradiction between reads]"
+      ]
+     }
+    ],
+    17
+   ]
+  },
+  {
+   "fn": "source",
+   "args": [
+    "Source: [reads by topic]. If there are no conflicts, say so in one sentence."
+   ]
+  }
+ ]
+}
